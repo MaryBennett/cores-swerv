@@ -1,6 +1,8 @@
 #include "defines.h"
 
-#define ITERATIONS 1
+#ifndef ITERATIONS
+#define ITERATIONS 10
+#endif
 
 
 /*

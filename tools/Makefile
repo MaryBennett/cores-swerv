@@ -33,7 +33,7 @@ VCS = vcs
 VERILATOR = verilator
 VLOG = qverilog
 RIVIERA = riviera
-GCC_PREFIX = riscv64-unknown-elf
+GCC_PREFIX = riscv32-unknown-elf
 BUILD_DIR = snapshots/${snapshot}
 TBDIR = ${RV_ROOT}/testbench
 
@@ -102,7 +102,7 @@ verilator-build: ${TBFILES} ${BUILD_DIR}/defines.h test_tb_top.cpp
                 ${TBFILES} \
                 --top-module tb_top -exe test_tb_top.cpp --autoflush $(VERILATOR_DEBUG)
 	cp ${RV_ROOT}/testbench/test_tb_top.cpp obj_dir
-	$(MAKE) -j -C obj_dir/ -f Vtb_top.mk $(VERILATOR_MAKE_FLAGS)
+	$(MAKE) -C obj_dir/ -f Vtb_top.mk $(VERILATOR_MAKE_FLAGS)
 	touch verilator-build
 
 vcs-build: ${TBFILES} ${BUILD_DIR}/defines.h
